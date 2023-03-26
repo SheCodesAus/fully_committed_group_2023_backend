@@ -5,7 +5,7 @@ from rest_framework import serializers, validators
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ("id", "username", "first_name","last_name","email", "is_active", "password")
+        fields = ("id", "username", "first_name","last_name","email", "is_active", "is_staff", "is_superuser", "password")
 
         extra_kwargs = {
             "email": {
@@ -15,6 +15,8 @@ class CustomUserSerializer(serializers.ModelSerializer):
             },
             "password": {"write_only": True},
             "is_active": {"read_only": True},
+            "is_staff": {"read_only": True},
+            "is_superuser": {"read_only": True},
         }
 
     def create(self, validated_data):
@@ -31,7 +33,9 @@ class CustomUserDetailSerializer(CustomUserSerializer):
                 "username",
                 "email",
                 "is_active",
-                "bio",
-                "avatar",
+                "is_staff",
+                "is_superuser"
             )
             read_only_fields = ["id", ]
+
+# Permission References https://realpython.com/manage-users-in-django-admin/
