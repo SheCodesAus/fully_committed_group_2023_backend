@@ -27,14 +27,21 @@ class Mentor(models.Model):
     ]
 
     STEP_CHOICES = [
-        ('step_1_interview', 'Step 1 - Interview'),
-        ('step_2_send_offer', 'Step 2 - Send Offer'),
-        ('step_3_send_contract', 'Step 3 - Send Contract'),
-        ('step_4_returned_contract', 'Step 4 - Returned Contract'),
+        ('step_1_interview', 'Step 1 - Interview Prospective Mentor'),
+        ('step_1b_interview_complete', 'Step 1 - Interview Complete'),
+        ('step_2_send_offer', 'Step 2 - Send Offer to Mentor'),
+        ('step_2b_sent_offer', 'Step 2 - Sent Offer to Mentor'),
+        ('step_3_send_contract', 'Step 3 - Send Contract to Mentor'),
+        ('step_3b_sent_contract', 'Step 3 - Sent Contract to Mentor'),
+        ('step_4_returned_contract', 'Step 4 - Contract Return to She Codes'),
+        ('step_4b_signed_contract', 'Step 4 - Contract Signed by Kate'),
         ('step_5_send_calendar_invite', 'Step 5 - Send Calendar Invite'),
+        ('step_5b_sent_calendar_invite', 'Step 5 - Calendar Invite Sent'),
+        ('step_5c_declined_calendar_invite', 'Step 5 - Invite Declined'),
+        ('step_5c_accepted_calendar_invite', 'Step 5 - Invite Accepted'),
         ('step_6_onboard_mentor', 'Step 6 - Onboard Mentor'),
-        ('step_7_mentoring', 'Step 7 - Mentoring'),
-        ('step_8_feedback_sent', 'Step 8 - Feedback Sent'),
+        ('step_7_mentoring', 'Mentoring in Program'),
+        ('step_8_feedback_sent', 'Step 8 - Feedback Sent to Mentor'),
         ('step_9_offboard_mentor', 'Step 9 - Offboard Mentor')
     ]
 
