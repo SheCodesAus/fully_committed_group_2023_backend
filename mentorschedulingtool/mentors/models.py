@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# from sess.models import Session
+from sess.models import Session
 # Create your models here.
 class Mentor(models.Model):
     html_css = 'html_css'
@@ -91,9 +91,13 @@ class Mentor(models.Model):
     feedback = models.TextField()
     is_active = models.BooleanField()
 
-    #TODO: ASSIGN A SESSION TO THIS MENTOR
     #TODO: DISPLAY THE LIST OF SESSIONS THIS MENTOR IS ASSIGNED TO
-    #BUG: Circular reference issue. Revisit Crowdfunding backend for help
+
+    #one option
+    # session = models.ForeignKey(Session, on_delete=models.CASCADE, default=None)
+
+    #multiple options
+    sessions = models.ManyToManyField(Session, related_name='mentors', blank=True, default=None)
     
     # mentors = MentorSerializer(many=True, source="mentors", required=False)
     # sessions = models.ManyToManyField(Session, related_name='mentors', blank=True)

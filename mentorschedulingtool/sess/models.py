@@ -1,6 +1,6 @@
 from django.db import models
 
-from mentors.models import Mentor 
+# from mentors.models import Mentor 
 
 
 class Session(models.Model):
@@ -31,7 +31,8 @@ class Session(models.Model):
         ('one_day_workshop', 'One Day Workshop')
     )
     module_type = models.CharField(max_length=255, choices=MODULE_TYPE_CHOICES)
-
+    # project = models.ForeignKey(Project, on_delete=models.CASCADE, default=None)
+    # mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE, default=None)
     #TODO: ASSIGN A PROJECT TO THIS SESSION
     #TODO: DISPLAY THE LIST OF MENTORS THIS SESSION IS ASSIGNED TO
     #BUG: Circular reference issue. Revisit Crowdfunding backend for help
