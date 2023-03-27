@@ -1,5 +1,7 @@
 from django.db import models
 
+
+from sess.models import Session
 # Create your models here.
 class Mentor(models.Model):
     html_css = 'html_css'
@@ -55,7 +57,7 @@ class Mentor(models.Model):
         
         ('step_7_mentoring', 'Step 7 - Mentoring in Program'),
         
-        ('step_8_collate_feedback', 'Step 8 - Collate Feedback for Mentor')
+        ('step_8_collate_feedback', 'Step 8 - Collate Feedback for Mentor'),
         ('step_8a_feedback_sent', 'Step 8 - Feedback Sent to Mentor'),
         
         ('step_9_offboard_mentor', 'Step 9 - Offboard Mentor'),
@@ -89,7 +91,18 @@ class Mentor(models.Model):
     feedback = models.TextField()
     is_active = models.BooleanField()
 
-    # FK to do
-    module_id = models.IntegerField()
-    program_id = models.IntegerField()
+    #TODO: DISPLAY THE LIST OF SESSIONS THIS MENTOR IS ASSIGNED TO
 
+    #one option
+    # session = models.ForeignKey(Session, on_delete=models.CASCADE, default=None)
+
+    #multiple options
+    sessions = models.ManyToManyField(Session, related_name='mentors', blank=True, default=None)
+    
+    # mentors = MentorSerializer(many=True, source="mentors", required=False)
+    # sessions = models.ManyToManyField(Session, related_name='mentors', blank=True)
+
+    # Return the name of the mentors
+    def __str__(self):
+
+        return f"{self.first_name} {self.last_name}"
