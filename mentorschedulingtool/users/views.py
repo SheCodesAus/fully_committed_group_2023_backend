@@ -17,7 +17,7 @@ class CustomUserDetailView(generics.RetrieveUpdateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserDetailSerializer
 
-class SessionUserDetailView(generics.RetrieveUpdateAPIView):
+class CurrentUserDetailView(generics.RetrieveUpdateAPIView):
     permission_classes = (IsAuthenticated,)
     lookup_field = 'id'
     serializer_class = CustomUserDetailSerializer

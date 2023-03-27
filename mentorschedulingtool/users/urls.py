@@ -7,5 +7,5 @@ from . import views
 urlpatterns = [
     path("", views.CustomUserList.as_view(), name="customuser-list"),
     path("<int:pk>/", views.CustomUserDetailView.as_view(), name="customuser-detail"),
-    path("session/", views.SessionUserDetailView.as_view(), name="session"),
+    path("current/", views.CurrentUserDetailView.as_view(), name="current"),
 ]
