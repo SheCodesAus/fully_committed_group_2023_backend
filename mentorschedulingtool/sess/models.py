@@ -31,6 +31,7 @@ class Session(models.Model):
         ('one_day_workshop', 'One Day Workshop')
     )
     module_type = models.CharField(max_length=255, choices=MODULE_TYPE_CHOICES)
+    
     # project = models.ForeignKey(Project, on_delete=models.CASCADE, default=None)
     # mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE, default=None)
     #TODO: ASSIGN A PROJECT TO THIS SESSION

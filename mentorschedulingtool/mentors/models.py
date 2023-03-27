@@ -96,10 +96,6 @@ class Mentor(models.Model):
     feedback = models.TextField()
     is_active = models.BooleanField()
 
-    '''
-    TODO: 
-    DISPLAY THE LIST OF SESSIONS THIS MENTOR IS ASSIGNED TO'''
-
     #multiple options
     sessions = models.ManyToManyField(
         Session, related_name='mentors', blank=True, default=None
