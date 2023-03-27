@@ -55,7 +55,7 @@ class Mentor(models.Model):
         
         ('step_7_mentoring', 'Step 7 - Mentoring in Program'),
         
-        ('step_8_collate_feedback', 'Step 8 - Collate Feedback for Mentor')
+        ('step_8_collate_feedback', 'Step 8 - Collate Feedback for Mentor'),
         ('step_8a_feedback_sent', 'Step 8 - Feedback Sent to Mentor'),
         
         ('step_9_offboard_mentor', 'Step 9 - Offboard Mentor'),
@@ -90,6 +90,6 @@ class Mentor(models.Model):
     is_active = models.BooleanField()
 
     # FK to do
-    module_id = models.IntegerField()
-    program_id = models.IntegerField()
+    # module_id = models.IntegerField()
+    # program_id = models.IntegerField()
 

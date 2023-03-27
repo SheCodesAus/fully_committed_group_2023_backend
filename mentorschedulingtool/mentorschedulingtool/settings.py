@@ -38,6 +38,7 @@ CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev']
 
 INSTALLED_APPS = [
     'mentors.apps.MentorsConfig',
+    'sess.apps.SessConfig',
     'rest_framework',
     'corsheaders',
     'django.contrib.admin',
