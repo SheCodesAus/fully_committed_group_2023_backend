@@ -2,18 +2,17 @@ from django.db import models
 
 from mentors.models import Mentor 
 
-# Create your models here.
+
 class Session(models.Model):
-    id = models.IntegerField(primary_key=True)
     session_name = models.CharField(max_length=255)
     mentors_required = models.IntegerField()
 
-    mentors_assigned = models.IntegerField()
+    # mentors_assigned = models.IntegerField()
 
     # counts the number of mentors assigned to this session
-    # @property
-    # def mentors_assigned(self):
-    #     return self.mentors.count()
+    @property
+    def mentors_assigned(self):
+        return self.mentors.all().count()
     
     date = models.DateTimeField()
     CITY_CHOICES = (
@@ -33,6 +32,15 @@ class Session(models.Model):
     )
     module_type = models.CharField(max_length=255, choices=MODULE_TYPE_CHOICES)
 
-    #FK
-    # program_id = models.ManyToManyField(Program, related_name="program")
-    # mentor_id = models.ForeignKey(Mentor, on_delete=models.PROTECT, related_name="mentors")
+    #TODO: ASSIGN A PROJECT TO THIS SESSION
+    #TODO: DISPLAY THE LIST OF MENTORS THIS SESSION IS ASSIGNED TO
+    #BUG: Circular reference issue. Revisit Crowdfunding backend for help
+
+    # mentors = models.ManyToManyField(
+    #     Mentor, related_name="sessions", blank=True
+    #     )
+
+    # Return the name of the session
+    def __str__(self):
+
+        return self.session_name
