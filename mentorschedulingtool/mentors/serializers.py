@@ -1,14 +1,21 @@
 from rest_framework import serializers
-# from sess.serializers import SessionSerializer
 
-from .models import Mentor
+from .models import Mentor,Session
 
+# created for the session view - to avoid session repetition
+class MentorWithoutSessionsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mentor
+        exclude = ('sessions', )
+
+# created to get full session view with session details
+class SessionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Session
+        fields = '__all__'
 class MentorSerializer(serializers.ModelSerializer):
-    #TODO: ASSIGN A SESSION TO THIS MENTOR
-    #TODO: DISPLAY THE LIST OF SESSIONS THIS MENTOR IS ASSIGNED TO
-    #BUG: Circular reference issue. Revisit Crowdfunding backend for help
-    
-    # sessions = SessionSerializer(many=True, source="sessions", required=False)
+    sessions = SessionSerializer(many=True)
+
     class Meta:
         model = Mentor
         fields = '__all__'

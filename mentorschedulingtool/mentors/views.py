@@ -8,3 +8,7 @@ from .serializers import MentorSerializer
 class MentorList (generics.ListCreateAPIView):
     queryset = Mentor.objects.all()
     serializer_class = MentorSerializer
+
+class MentorListDetail (generics.RetrieveUpdateDestroyAPIView):
+    queryset = Mentor.objects.all()
+    serializer_class = MentorSerializer

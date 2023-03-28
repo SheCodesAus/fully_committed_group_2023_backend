@@ -82,8 +82,13 @@ class Mentor(models.Model):
     lead_mentor = models.BooleanField()
     she_codes_alumni = models.BooleanField()
 
-    # need to select more than one
+    '''
+    SKILLS:
+    need to select more than one
+    # convert to manytomany (speak to kat first)
+    '''
     skills = models.CharField(max_length=255, choices=SKILL_CHOICES)
+
     city = models.CharField(max_length=255, choices=CITY_CHOICES)
     current_step = models.CharField(max_length=255, choices=STEP_CHOICES)
     payment_type = models.CharField(max_length=255, choices=PAYMENT_TYPE_CHOICES)
@@ -91,18 +96,18 @@ class Mentor(models.Model):
     feedback = models.TextField()
     is_active = models.BooleanField()
 
-    #TODO: DISPLAY THE LIST OF SESSIONS THIS MENTOR IS ASSIGNED TO
-
-    #one option
-    # session = models.ForeignKey(Session, on_delete=models.CASCADE, default=None)
-
     #multiple options
-    sessions = models.ManyToManyField(Session, related_name='mentors', blank=True, default=None)
+    sessions = models.ManyToManyField(
+        Session, related_name='mentors', blank=True, default=None
+        )
     
-    # mentors = MentorSerializer(many=True, source="mentors", required=False)
-    # sessions = models.ManyToManyField(Session, related_name='mentors', blank=True)
-
     # Return the name of the mentors
     def __str__(self):
 
         return f"{self.first_name} {self.last_name}"
+    
+    
+    # mentors = MentorSerializer(many=True, source="mentors", required=False)
+    # sessions = models.ManyToManyField(Session, related_name='mentors', blank=True)
+    #one option
+    # session = models.ForeignKey(Session, on_delete=models.CASCADE, default=None)

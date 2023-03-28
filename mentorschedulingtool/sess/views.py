@@ -10,3 +10,7 @@ from .serializers import SessionSerializer
 class SessionList (generics.ListCreateAPIView):
     queryset = Session.objects.all()
     serializer_class = SessionSerializer
+
+class SessionListDetail (generics.RetrieveUpdateDestroyAPIView):
+    queryset = Session.objects.all()
+    serializer_class = SessionSerializer
