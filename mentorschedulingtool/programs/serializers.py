@@ -10,4 +10,13 @@ class ProgramSerializer(serializers.ModelSerializer):
     sessions = SessionSerializer(many=True, read_only=True)
     class Meta:
         model = Program
-        fields = '__all__'
+        fields = [
+            'id',
+            'program_name',
+            'start_date',
+            'end_date',
+            'city',
+            'program_type',
+            'sessions'
+        ]
+        read_only_fields = ['id']
