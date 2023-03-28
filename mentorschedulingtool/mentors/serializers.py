@@ -8,7 +8,7 @@ class MentorWithoutSessionsSerializer(serializers.ModelSerializer):
         model = Mentor
         exclude = ('sessions', )
 
-# created to get full session view with session details
+# created to get full session view with session details on mentor list
 class SessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Session
