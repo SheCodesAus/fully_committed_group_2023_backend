@@ -1,7 +1,7 @@
 from django.db import models
 
 # from mentors.models import Mentor 
-
+from programs.models import Program 
 
 class Session(models.Model):
     session_name = models.CharField(max_length=255)
@@ -32,7 +32,8 @@ class Session(models.Model):
     )
     module_type = models.CharField(max_length=255, choices=MODULE_TYPE_CHOICES)
     
-    # project = models.ForeignKey(Project, on_delete=models.CASCADE, default=None)
+    program = models.ForeignKey(Program, on_delete=models.CASCADE, default=None, null=True)
+
     # mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE, default=None)
     #TODO: ASSIGN A PROJECT TO THIS SESSION
     #TODO: DISPLAY THE LIST OF MENTORS THIS SESSION IS ASSIGNED TO
