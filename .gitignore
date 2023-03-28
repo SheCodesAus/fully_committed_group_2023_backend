@@ -2,17 +2,14 @@
 venv/
 .venv/
 venv/*
-
 # Python temp files
 __pycache__/
 **/__pycache__
 *.py[cod]
 *$py.class
-
 # settings files
 .DS_Store
 *.vscode
-
 # project stored data
 *.sqlite3
 staticfiles

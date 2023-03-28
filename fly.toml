@@ -44,4 +44,4 @@ processes = []
 
 [mounts]
   source = "dbvol"
-  destination = "/dbvol" 
+  destination = "/dbvol"
