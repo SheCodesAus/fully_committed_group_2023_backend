@@ -32,7 +32,7 @@ class Session(models.Model):
     )
     module_type = models.CharField(max_length=255, choices=MODULE_TYPE_CHOICES)
     
-    program = models.ForeignKey(Program, on_delete=models.CASCADE, default=None, null=True)
+    program = models.ForeignKey(Program, on_delete=models.CASCADE, default=None, null=True, related_name="sessions")
 
     # mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE, default=None)
     #TODO: ASSIGN A PROJECT TO THIS SESSION
