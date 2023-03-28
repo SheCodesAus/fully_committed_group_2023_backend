@@ -4,21 +4,6 @@ from django.db import models
 from sess.models import Session
 # Create your models here.
 class Mentor(models.Model):
-    html_css = 'html_css'
-    python = 'python'
-    javascript = 'javascript'
-    react = 'react'
-    django = 'django'
-    drf = 'drf'
-    SKILL_CHOICES = [
-        (html_css, 'HTML/CSS'),
-        (python, 'Python'),
-        (javascript, 'JavaScript'),
-        (react, 'React'),
-        (django, 'Django'),
-        (drf, 'DRF')
-    ]
-
     Brisbane = 'Brisbane'
     Sydney = 'Sydney'
     Perth = 'Perth'
@@ -77,21 +62,26 @@ class Mentor(models.Model):
     last_name = models.CharField(max_length=255)
     email = models.EmailField()
     will_travel = models.BooleanField()
+    city = models.CharField(max_length=255, choices=CITY_CHOICES)
+
+    #skills
+    html_css = models.BooleanField()
+    javascript = models.BooleanField()
+    react = models.BooleanField()
+    python = models.BooleanField()
+    django = models.BooleanField()
+    drf = models.BooleanField()
+
+    # mentor types
     junior_mentor = models.BooleanField()
     industry_mentor = models.BooleanField()
     lead_mentor = models.BooleanField()
     she_codes_alumni = models.BooleanField()
-
-    '''
-    SKILLS:
-    need to select more than one
-    # convert to manytomany (speak to kat first)
-    '''
-    skills = models.CharField(max_length=255, choices=SKILL_CHOICES)
-
-    city = models.CharField(max_length=255, choices=CITY_CHOICES)
-    current_step = models.CharField(max_length=255, choices=STEP_CHOICES)
     payment_type = models.CharField(max_length=255, choices=PAYMENT_TYPE_CHOICES)
+
+    #steps
+    current_step = models.CharField(max_length=255, choices=STEP_CHOICES)
+    
     notes = models.TextField()
     feedback = models.TextField()
     is_active = models.BooleanField()
