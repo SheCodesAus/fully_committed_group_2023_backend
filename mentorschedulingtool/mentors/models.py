@@ -65,12 +65,12 @@ class Mentor(models.Model):
     city = models.CharField(max_length=255, choices=CITY_CHOICES)
 
     #skills
-    html_css = models.BooleanField()
-    javascript = models.BooleanField()
-    react = models.BooleanField()
-    python = models.BooleanField()
-    django = models.BooleanField()
-    drf = models.BooleanField()
+    html_css = models.BooleanField(default=False)
+    javascript = models.BooleanField(default=False)
+    react = models.BooleanField(default=False)
+    python = models.BooleanField(default=False)
+    django = models.BooleanField(default=False)
+    drf = models.BooleanField(default=False)
 
     # mentor types
     junior_mentor = models.BooleanField()
