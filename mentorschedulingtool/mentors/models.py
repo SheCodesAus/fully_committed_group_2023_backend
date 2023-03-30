@@ -88,7 +88,7 @@ class Mentor(models.Model):
 
     #multiple options
     sessions = models.ManyToManyField(
-        Session, related_name='mentors', blank=True, default=None
+        Session, related_name='mentors', blank=True
         )
     
     # Return the name of the mentors
