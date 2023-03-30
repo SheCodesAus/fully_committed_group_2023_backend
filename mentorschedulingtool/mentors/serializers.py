@@ -8,6 +8,7 @@ from sess.models import Session
 class MentorWithoutSessionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
+        fields = '__all__'
         # exclude = ('sessions', )
 
 # created to get full session view with session details on mentor list
