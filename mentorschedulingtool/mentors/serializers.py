@@ -1,12 +1,14 @@
 from rest_framework import serializers
 
-from .models import Mentor,Session
+from .models import Mentor
+
+from sess.models import Session
 
 # created for the session view - to avoid session repetition
 class MentorWithoutSessionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
-        exclude = ('sessions', )
+        # exclude = ('sessions', )
 
 # created to get full session view with session details on mentor list
 class SessionSerializer(serializers.ModelSerializer):
