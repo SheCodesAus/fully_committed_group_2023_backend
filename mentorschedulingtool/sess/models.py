@@ -27,7 +27,8 @@ class Session(models.Model):
         ('django', 'Django'),
         ('drf', 'DRF'),
         ('group', 'Group'),
-        ('one_day_workshop', 'One Day Workshop')
+        ('one_day_workshop', 'One Day Workshop'),
+        ('n/a', 'Not Applicable')
     )
     module_type = models.CharField(max_length=255, choices=MODULE_TYPE_CHOICES)
     
