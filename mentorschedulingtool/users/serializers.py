@@ -34,8 +34,9 @@ class CustomUserDetailSerializer(CustomUserSerializer):
                 "email",
                 "is_active",
                 "is_superuser"
-                # "is_lead_mentor"
             )
-            read_only_fields = ["id", ]
+            read_only_fields = ["id"]
 
+# https://stackoverflow.com/a/50472986
+# https://www.django-rest-framework.org/api-guide/serializers/#customizing-serialization-classes
 # Permission References https://realpython.com/manage-users-in-django-admin/

@@ -14,7 +14,13 @@ class IsSuperUserOrReadOnly(BasePermission):
         return request.user.is_superuser
     
 class IsOwnProfile(BasePermission):
+    """
+    Provides requested user access only to own profile page
+    note: only superusers can edit any user
+    """
     def has_object_permission(self, request, view, obj):
         if request.method in SAFE_METHODS:
+            return True
+        if request.user.is_superuser:
             return True
         return obj.id == request.user.id

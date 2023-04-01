@@ -20,10 +20,10 @@ class CustomUserDetailView(generics.RetrieveUpdateAPIView):
     serializer_class = CustomUserDetailSerializer
 
 class CurrentUserDetailView(generics.RetrieveUpdateAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnProfile]
-    permission_classes = (IsAuthenticated,)
+    permission_classes = [permissions.IsAuthenticated, IsSuperUserOrReadOnly, IsOwnProfile]
     lookup_field = 'id'
     serializer_class = CustomUserDetailSerializer
 
     def get_object(self):
         return self.request.user
+
