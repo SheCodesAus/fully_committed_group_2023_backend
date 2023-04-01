@@ -1,5 +1,8 @@
+# from django.contrib.auth import get_user_model
 from django.db import models
 # from django.db.models import Sum, Count
+
+# User = get_user_model()  # added to use the user
 
 # Create your models here.
 class Program(models.Model):
@@ -31,3 +34,4 @@ class Program(models.Model):
     @property
     def mentors_assigned(self):
         return sum(session.mentors_assigned for session in self.sessions.all())
+    

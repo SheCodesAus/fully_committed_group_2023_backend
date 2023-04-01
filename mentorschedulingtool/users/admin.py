@@ -6,6 +6,7 @@ from .models import CustomUser
 
 # Register your models here.
 class CustomUserAdmin(UserAdmin):
+    list_display = ('id', 'username','email', 'is_superuser')
     model = CustomUser
     fieldsets = (
         *UserAdmin.fieldsets,
