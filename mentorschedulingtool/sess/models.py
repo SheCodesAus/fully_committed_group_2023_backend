@@ -51,13 +51,13 @@ class Session(models.Model):
 # uses the mentor model above to create a connection between mentor type and session
 # this allows the mentor to be matched to the correct session / mentor type combination
 # TODO: create junior/industry/lead mentors assigned fields in session
-# TODO: create calc that sums the total in total_assigned_mentors
-class SelectSession(models.Model):
+# # TODO: create calc that sums the total in total_assigned_mentors
+# class SelectSession(models.Model):
 
-    session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name="selections")
-    MENTOR_TYPE_CHOICES = [
-        ('junior_mentor', 'Junior Mentor'),
-        ('industry_mentor', 'Industry Mentor'),
-        ('lead_mentor', 'Lead Mentor')
-    ]
-    mentor_type = models.CharField(max_length=255, choices=MENTOR_TYPE_CHOICES)
+#     session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name="selections")
+#     MENTOR_TYPE_CHOICES = [
+#         ('junior_mentor', 'Junior Mentor'),
+#         ('industry_mentor', 'Industry Mentor'),
+#         ('lead_mentor', 'Lead Mentor')
+#     ]
+#     mentor_type = models.CharField(max_length=255, choices=MENTOR_TYPE_CHOICES)
