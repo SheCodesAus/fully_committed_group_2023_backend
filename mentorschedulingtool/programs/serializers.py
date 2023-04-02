@@ -6,15 +6,15 @@ from sess.models import Session
 
 class ProgramSerializer(serializers.ModelSerializer):
     sessions = SessionSerializer(many=True, read_only=True)
-    mentors_required = serializers.ReadOnlyField()
-    mentors_assigned = serializers.ReadOnlyField()
+    total_mentors_required = serializers.ReadOnlyField()
+    total_mentors_assigned = serializers.ReadOnlyField()
     class Meta:
         model = Program
         fields = [
             'id',
             'program_name',
-            'mentors_required',
-            'mentors_assigned',
+            'total_mentors_required',
+            'total_mentors_assigned',
             'start_date',
             'end_date',
             'city',
@@ -22,4 +22,4 @@ class ProgramSerializer(serializers.ModelSerializer):
             'sessions'
 
         ]
-        read_only_fields = ['id', 'mentors_required', 'mentors_assigned']
+        read_only_fields = ['id', 'total_mentors_required', 'total_mentors_assigned']
