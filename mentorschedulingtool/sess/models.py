@@ -48,6 +48,10 @@ class Session(models.Model):
     def __str__(self):
         return self.session_name
 
+# uses the mentor model above to create a connection between mentor type and session
+# this allows the mentor to be matched to the correct session / mentor type combination
+# TODO: create junior/industry/lead mentors assigned fields in session
+# TODO: create calc that sums the total in total_assigned_mentors
 class SelectSession(models.Model):
 
     session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name="selections")
