@@ -5,7 +5,7 @@ from rest_framework import serializers, validators
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ("id", "username", "first_name","last_name","email", "is_active", "is_staff", "is_superuser", "password")
+        fields = ("id", "username", "first_name","last_name","email", "is_active", "is_superuser", "password")
 
         extra_kwargs = {
             "email": {
@@ -31,11 +31,14 @@ class CustomUserDetailSerializer(CustomUserSerializer):
             fields = (
                 "id",
                 "username",
+                "first_name",
+                "last_name",
                 "email",
                 "is_active",
-                "is_staff",
                 "is_superuser"
             )
-            read_only_fields = ["id", ]
+            read_only_fields = ["id"]
 
+# https://stackoverflow.com/a/50472986
+# https://www.django-rest-framework.org/api-guide/serializers/#customizing-serialization-classes
 # Permission References https://realpython.com/manage-users-in-django-admin/
