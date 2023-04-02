@@ -22,16 +22,16 @@ class Program(models.Model):
     city = models.CharField(max_length=50, choices=CITIES)
     program_type = models.CharField(max_length=50, choices=PROGRAM_TYPES)
     
-    mentors_required = models.IntegerField(default=0)
-    mentors_assigned = models.IntegerField(default=0)
+    total_mentors_required = models.IntegerField(default=0)
+    total_mentors_assigned = models.IntegerField(default=0)
 
     # for loop: for each value in mentors_required on the sessions list, add to the sum of mentors_required
     @property
-    def mentors_required(self):
-        return sum(session.mentors_required for session in self.sessions.all())
+    def total_mentors_required(self):
+        return sum(session.total_mentors_required for session in self.sessions.all())
 
     # for loop: for each value in mentors_assigned on the sessions list, add to the sum of mentors_assigned
     @property
-    def mentors_assigned(self):
-        return sum(session.mentors_assigned for session in self.sessions.all())
+    def total_mentors_assigned(self):
+        return sum(session.total_mentors_assigned for session in self.sessions.all())
     

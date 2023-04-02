@@ -4,9 +4,6 @@ from .models import Program
 from sess.serializers import SessionSerializer
 from sess.models import Session
 
-
-
-# i can simplify JSON file to just id of sessions if required. Let me know
 class ProgramSerializer(serializers.ModelSerializer):
     sessions = SessionSerializer(many=True, read_only=True)
     mentors_required = serializers.ReadOnlyField()

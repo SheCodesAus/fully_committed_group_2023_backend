@@ -5,13 +5,19 @@ from programs.models import Program
 
 class Session(models.Model):
     session_name = models.CharField(max_length=255)
-    mentors_required = models.IntegerField()
+    junior_mentors_required = models.IntegerField(default=0)
+    industry_mentors_required = models.IntegerField(default=0)
+    lead_mentors_required = models.IntegerField(default=1)
 
-    # counts the number of mentors assigned to this session
+    # counts the total number of mentors assigned to this session
     @property
-    def mentors_assigned(self):
+    def total_mentors_assigned(self):
         return self.mentors.all().count()
-    # check if all is needed?
+    
+    # counts the total number of mentors required for this session
+    @property
+    def total_mentors_required(self):
+        return sum((self.junior_mentors_required, self.industry_mentors_required, self.lead_mentors_required))
     
     date = models.DateTimeField()
     CITY_CHOICES = (
