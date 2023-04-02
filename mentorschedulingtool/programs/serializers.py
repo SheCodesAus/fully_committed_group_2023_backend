@@ -23,3 +23,23 @@ class ProgramSerializer(serializers.ModelSerializer):
 
         ]
         read_only_fields = ['id', 'total_mentors_required', 'total_mentors_assigned']
+
+class ProgramDetailSerializer(ProgramSerializer):
+    class Meta:
+        model = Program
+        fields = [
+            'id',
+            'program_name',
+            'total_junior_mentors_required',
+            'total_industry_mentors_required',
+            'total_lead_mentors_required',
+            'total_mentors_required',
+            'total_mentors_assigned',
+            'start_date',
+            'end_date',
+            'city',
+            'program_type',
+            'sessions'
+
+        ]
+        read_only_fields = ['id', 'total_mentors_required', 'total_mentors_assigned', 'total_junior_mentors_required', 'total_industry_mentors_required', 'total_lead_mentors_required']
