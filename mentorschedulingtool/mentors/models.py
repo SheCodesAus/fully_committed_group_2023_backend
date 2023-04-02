@@ -90,10 +90,7 @@ class Mentor(models.Model):
     # sessions = models.ManyToManyField(
     #     Session, related_name='mentors', blank=True
     #     )
-    # multiple options
-    sessions = models.ManyToManyField(
-        Session, related_name='mentors', blank=True
-        )
+
     select_sessions = models.ManyToManyField(
         SelectSession, related_name='mentors', blank=True
         )
