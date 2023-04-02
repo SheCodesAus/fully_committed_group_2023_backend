@@ -1,8 +1,10 @@
 from django.db import models
-
-
+from django.contrib.auth import get_user_model
 from sess.models import Session
-# Create your models here.
+
+# add creator to notes
+User = get_user_model() 
+
 class Mentor(models.Model):
     Brisbane = 'Brisbane'
     Sydney = 'Sydney'
@@ -82,8 +84,8 @@ class Mentor(models.Model):
     #steps
     current_step = models.CharField(max_length=255, choices=STEP_CHOICES)
     
-    notes = models.TextField()
-    feedback = models.TextField()
+    notes = models.TextField(blank=True)
+    feedback = models.TextField(blank=True)
     is_active = models.BooleanField()
 
     #multiple options
@@ -96,8 +98,28 @@ class Mentor(models.Model):
 
         return f"{self.first_name} {self.last_name}"
     
-    
-    # mentors = MentorSerializer(many=True, source="mentors", required=False)
-    # sessions = models.ManyToManyField(Session, related_name='mentors', blank=True)
-    #one option
-    # session = models.ForeignKey(Session, on_delete=models.CASCADE, default=None)
+
+
+class MentorNote(models.Model):
+    Feedback = 'Feedback'
+    Case_Note = 'Case Note'
+    Lead_Mentor_Suitability = 'Lead Mentor Suitability'
+    NOTE_TYPE_CHOICES = [
+        (Feedback, 'Feedback'),
+        (Case_Note, 'Case Note'),
+        (Lead_Mentor_Suitability, 'Lead Mentor Suitability')
+    ]
+
+    created_on = models.DateTimeField(auto_now_add=True)
+    body = models.TextField(blank=False)    
+    notes_type = models.CharField(max_length=255, choices=NOTE_TYPE_CHOICES)
+
+    noter = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="noter_notes", default=1,
+    )
+
+    mentor = models.ForeignKey(
+        Mentor,
+        on_delete=models.CASCADE,
+        related_name="mentornotes", default=None
+    )
