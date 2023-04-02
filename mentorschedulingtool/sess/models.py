@@ -47,3 +47,13 @@ class Session(models.Model):
     # Return the name of the session
     def __str__(self):
         return self.session_name
+
+class SelectSession(models.Model):
+
+    session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name="selections")
+    MENTOR_TYPE_CHOICES = [
+        ('junior_mentor', 'Junior Mentor'),
+        ('industry_mentor', 'Industry Mentor'),
+        ('lead_mentor', 'Lead Mentor')
+    ]
+    mentor_type = models.CharField(max_length=255, choices=MENTOR_TYPE_CHOICES)

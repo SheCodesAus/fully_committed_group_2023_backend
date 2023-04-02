@@ -1,7 +1,7 @@
 from django.db import models
 
 
-from sess.models import Session
+from sess.models import Session, SelectSession
 # Create your models here.
 class Mentor(models.Model):
     Brisbane = 'Brisbane'
@@ -87,8 +87,15 @@ class Mentor(models.Model):
     is_active = models.BooleanField()
 
     #multiple options
+    # sessions = models.ManyToManyField(
+    #     Session, related_name='mentors', blank=True
+    #     )
+    # multiple options
     sessions = models.ManyToManyField(
         Session, related_name='mentors', blank=True
+        )
+    select_sessions = models.ManyToManyField(
+        SelectSession, related_name='mentors', blank=True
         )
     
     # Return the name of the mentors
