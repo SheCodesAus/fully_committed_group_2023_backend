@@ -84,8 +84,8 @@ class Mentor(models.Model):
     #steps
     current_step = models.CharField(max_length=255, choices=STEP_CHOICES)
     
-    notes = models.TextField(blank=True)
-    feedback = models.TextField(blank=True)
+    # notes = models.TextField(blank=True)
+    # feedback = models.TextField(blank=True)
     is_active = models.BooleanField()
 
     #multiple options

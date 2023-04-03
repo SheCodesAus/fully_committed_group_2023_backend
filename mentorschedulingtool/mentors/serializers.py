@@ -12,7 +12,7 @@ from sess.models import Session
 class MentorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
-        fields = ['id','first_name', 'last_name', 'email', 'will_travel', 'city', 'html_css', 'javascript', 'react', 'python', 'django', 'drf', 'junior_mentor', 'industry_mentor', 'lead_mentor', 'she_codes_alumni', 'payment_type', 'current_step', 'notes', 'feedback', 'is_active']
+        fields = ['id','first_name', 'last_name', 'email', 'will_travel', 'city', 'html_css', 'javascript', 'react', 'python', 'django', 'drf', 'junior_mentor', 'industry_mentor', 'lead_mentor', 'she_codes_alumni', 'payment_type', 'current_step', 'is_active']
 
 # ----------------------
 # /mentors/<id:pk>/
@@ -66,8 +66,6 @@ class MentorDetailSerializer(MentorSerializer):
             'she_codes_alumni', 
             'payment_type', 
             'current_step', 
-            'notes', 
-            'feedback', 
             'is_active', 
             'sessions',
             'mentornotes',
