@@ -4,7 +4,10 @@ from rest_framework.response import Response
 from .models import Mentor, MentorNote
 from .serializers import MentorDetailSerializer, MentorNoteSerializer, MentorSerializer
 from .permissions import IsSuperUserOrReadOnly
-# Create your views here.
+
+# -- API-Root Config
+from rest_framework.decorators import api_view
+from rest_framework.reverse import reverse
 
 # /mentors/
 class MentorList (generics.ListCreateAPIView):
@@ -32,3 +35,15 @@ class MentorNoteDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = MentorNote.objects.all()
     serializer_class = MentorNoteSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
+
+@api_view(["GET"])
+def api_root(request, format=None):
+    return Response(
+        {
+            "mentors": reverse("mentor-list", request=request, format=format),
+            "mentor-notes": reverse("mentor-notes-list", request=request, format=format),
+            "sessions": reverse("session-list", request=request, format=format),
+            "programs": reverse("program-list", request=request, format=format),
+            "users": reverse("customuser-list", request=request, format=format),
+        }
+    )

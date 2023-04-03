@@ -17,7 +17,11 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework.authtoken.views import obtain_auth_token
 
+# API Root ---
+from mentors.views import api_root
+
 urlpatterns = [
+    path("", api_root),
     path('admin/', admin.site.urls, name='admin'),
     path('', include('mentors.urls')),
     path('', include('sess.urls')),
