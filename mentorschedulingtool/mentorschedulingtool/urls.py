@@ -24,5 +24,5 @@ urlpatterns = [
     path('', include('programs.urls')),
     path("api-auth/", include("rest_framework.urls")),  # adds login button
     path("api-token-auth/", obtain_auth_token, name="api_token_auth"),  # adds generate token url
-    path("users/", include("users.urls")),
+    path('', include("users.urls")),
 ]
