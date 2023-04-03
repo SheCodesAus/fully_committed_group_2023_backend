@@ -5,17 +5,25 @@ from .models import Mentor, MentorNote
 from sess.models import Session
 
 
-# created for the session view - to avoid session repetition
+
+# /sessions/
+# /mentors/
+# sessions dropped from view, but available on detail. 
 class MentorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
         fields = ['id','first_name', 'last_name', 'email', 'will_travel', 'city', 'html_css', 'javascript', 'react', 'python', 'django', 'drf', 'junior_mentor', 'industry_mentor', 'lead_mentor', 'she_codes_alumni', 'payment_type', 'current_step', 'notes', 'feedback', 'is_active']
-# created to get full session view with session details on mentor list
+
+# ----------------------
+# /mentors/<id:pk>/
+# removes circular import issue for MentorDetailSerializer below
 class SessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Session
         fields = '__all__'
 
+# ----------------------
+# /mentor-notes/
 class MentorNoteSerializer(serializers.ModelSerializer):
     noter = serializers.ReadOnlyField(source="noter.username")
     # mentor = MentorSerializer(many=True)
@@ -31,6 +39,8 @@ class MentorNoteSerializer(serializers.ModelSerializer):
         # read_only_fields = [
         #     "id"]
 
+# ----------------------
+# /mentors/<id:pk>/
 class MentorDetailSerializer(MentorSerializer):
     sessions = SessionSerializer(many=True)
     mentornotes = MentorNoteSerializer(many=True, read_only=True)

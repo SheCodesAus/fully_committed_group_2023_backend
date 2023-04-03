@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import CustomUser
 from rest_framework import serializers, validators
 
+# /users/
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
@@ -25,6 +26,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+# /users/<id:pk>/
 class CustomUserDetailSerializer(CustomUserSerializer):
         class Meta:
             model = CustomUser

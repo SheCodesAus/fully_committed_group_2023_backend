@@ -6,16 +6,19 @@ from .serializers import MentorDetailSerializer, MentorNoteSerializer, MentorSer
 from .permissions import IsSuperUserOrReadOnly
 # Create your views here.
 
+# /mentors/
 class MentorList (generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
     queryset = Mentor.objects.all()
     serializer_class = MentorSerializer
 
+# /mentors/<id:pk>/
 class MentorDetail (generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
     queryset = Mentor.objects.all()
     serializer_class = MentorDetailSerializer
 
+# /mentor-notes/
 class MentorNoteList(generics.ListCreateAPIView):
     queryset = MentorNote.objects.all()
     serializer_class = MentorNoteSerializer
@@ -24,6 +27,7 @@ class MentorNoteList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(noter=self.request.user)
 
+# /mentor-notes/<id:pk>/
 class MentorNoteDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = MentorNote.objects.all()
     serializer_class = MentorNoteSerializer

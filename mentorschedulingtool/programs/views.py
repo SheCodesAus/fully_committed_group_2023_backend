@@ -6,11 +6,14 @@ from .serializers import ProgramSerializer, ProgramDetailSerializer
 from mentors.permissions import IsSuperUserOrReadOnly
 # Create your views here.
 
+# /programs/
 class ProgramList (generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
     queryset = Program.objects.all()
     serializer_class = ProgramSerializer
 
+
+# /programs/<id:pk>/
 class ProgramListDetail (generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
     queryset = Program.objects.all()
