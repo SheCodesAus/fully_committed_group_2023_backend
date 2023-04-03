@@ -24,7 +24,8 @@ class Session(models.Model):
 
     # session details
     session_name = models.CharField(max_length=255)
-    date = models.DateTimeField()
+    start_date = models.DateTimeField(default=None)
+    end_date= models.DateTimeField(default=None)
     city = models.CharField(max_length=255, choices=CITY_CHOICES)
     module_type = models.CharField(max_length=255, choices=MODULE_TYPE_CHOICES)
     program = models.ForeignKey(Program, on_delete=models.CASCADE, related_name="sessions")

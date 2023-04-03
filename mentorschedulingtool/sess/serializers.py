@@ -12,7 +12,7 @@ class SessionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Session
-        fields = ['id', 'session_name', 'mentors_required', 'mentors_assigned', 'date', 'city', 'module_type', 'program', 'mentors']
+        fields = ['id', 'session_name', 'mentors_required', 'mentors_assigned', 'start_date','end_date','city', 'module_type', 'program', 'mentors']
         read_only_fields = ['id']
 
 # /sessions/<id:pk>/
@@ -22,5 +22,5 @@ class SessionDetailSerializer(SessionSerializer):
 
     class Meta:
         model = Session
-        fields = ['id', 'session_name', 'mentors_required', 'mentors_assigned', 'date', 'city', 'module_type', 'program', 'mentors']
+        fields = ['id', 'session_name', 'mentors_required', 'mentors_assigned', 'start_date','end_date','city', 'module_type', 'program', 'mentors']
         read_only_fields = ['id']
