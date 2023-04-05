@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from .models import Mentor, MentorNote
 from .serializers import MentorDetailSerializer, MentorNoteSerializer, MentorSerializer
 from .permissions import IsSuperUserOrReadOnly
+from rest_framework.permissions import IsAuthenticated
 
 # -- API-Root Config
 from rest_framework.decorators import api_view
@@ -11,13 +12,13 @@ from rest_framework.reverse import reverse
 
 # /mentors/
 class MentorList (generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
     queryset = Mentor.objects.all()
     serializer_class = MentorSerializer
 
 # /mentors/<id:pk>/
 class MentorDetail (generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
     queryset = Mentor.objects.all()
     serializer_class = MentorDetailSerializer
 
@@ -25,7 +26,7 @@ class MentorDetail (generics.RetrieveUpdateDestroyAPIView):
 class MentorNoteList(generics.ListCreateAPIView):
     queryset = MentorNote.objects.all()
     serializer_class = MentorNoteSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save(noter=self.request.user)
@@ -34,7 +35,7 @@ class MentorNoteList(generics.ListCreateAPIView):
 class MentorNoteDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = MentorNote.objects.all()
     serializer_class = MentorNoteSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
 
 @api_view(["GET"])
 def api_root(request, format=None):
