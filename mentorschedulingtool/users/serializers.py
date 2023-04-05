@@ -2,10 +2,11 @@ from rest_framework import serializers
 from .models import CustomUser
 from rest_framework import serializers, validators
 
+# /users/
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ("id", "username", "first_name","last_name","email", "is_active", "is_superuser", "password")
+        fields = ("id", "username", "first_name","last_name","email", "is_active", "is_superuser","is_staff", "password")
 
         extra_kwargs = {
             "email": {
@@ -25,6 +26,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+# /users/<id:pk>/
 class CustomUserDetailSerializer(CustomUserSerializer):
         class Meta:
             model = CustomUser
@@ -35,6 +37,7 @@ class CustomUserDetailSerializer(CustomUserSerializer):
                 "last_name",
                 "email",
                 "is_active",
+                "is_staff",
                 "is_superuser"
             )
             read_only_fields = ["id"]
