@@ -12,13 +12,15 @@ from rest_framework.reverse import reverse
 
 # /mentors/
 class MentorList (generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
     queryset = Mentor.objects.all()
     serializer_class = MentorSerializer
 
 # /mentors/<id:pk>/
 class MentorDetail (generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
     queryset = Mentor.objects.all()
     serializer_class = MentorDetailSerializer
 
@@ -26,7 +28,8 @@ class MentorDetail (generics.RetrieveUpdateDestroyAPIView):
 class MentorNoteList(generics.ListCreateAPIView):
     queryset = MentorNote.objects.all()
     serializer_class = MentorNoteSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
 
     def perform_create(self, serializer):
         serializer.save(noter=self.request.user)
@@ -35,7 +38,8 @@ class MentorNoteList(generics.ListCreateAPIView):
 class MentorNoteDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = MentorNote.objects.all()
     serializer_class = MentorNoteSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
 
 @api_view(["GET"])
 def api_root(request, format=None):

@@ -9,13 +9,15 @@ from rest_framework.permissions import IsAuthenticated
 
 # /programs/
 class ProgramList (generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
     queryset = Program.objects.all()
     serializer_class = ProgramSerializer
 
 
 # /programs/<id:pk>/
 class ProgramListDetail (generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
     queryset = Program.objects.all()
     serializer_class = ProgramDetailSerializer
