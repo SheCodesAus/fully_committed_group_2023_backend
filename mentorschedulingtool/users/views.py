@@ -10,13 +10,13 @@ from mentors.permissions import IsSuperUserOrReadOnly, IsOwnProfile
 
 # /users/
 class CustomUserList (generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
 
 # /users/<id:pk>/
 class CustomUserDetailView(generics.RetrieveUpdateAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSuperUserOrReadOnly, IsAuthenticated]
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserDetailSerializer
 
