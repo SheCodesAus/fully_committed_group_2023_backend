@@ -6,7 +6,7 @@ from rest_framework import serializers, validators
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ("id", "username", "first_name","last_name","email", "is_active", "is_superuser", "password")
+        fields = ("id", "username", "first_name","last_name","email", "is_active", "is_superuser","is_staff", "password")
 
         extra_kwargs = {
             "email": {
@@ -37,6 +37,7 @@ class CustomUserDetailSerializer(CustomUserSerializer):
                 "last_name",
                 "email",
                 "is_active",
+                "is_staff",
                 "is_superuser"
             )
             read_only_fields = ["id"]
