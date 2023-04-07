@@ -65,7 +65,7 @@ class Mentor(models.Model):
     email = models.EmailField()
     will_travel = models.BooleanField()
     city = models.CharField(max_length=255, choices=CITY_CHOICES)
-    phone = models.CharField(max_length=20, default=None)
+    phone = models.CharField(max_length=20, default='', blank=True, null=True)
 
     #skills
     html_css = models.BooleanField(default=False)
