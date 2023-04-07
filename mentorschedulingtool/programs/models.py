@@ -21,7 +21,7 @@ class Program(models.Model):
     end_date = models.DateField()
     city = models.CharField(max_length=50, choices=CITIES)
     program_type = models.CharField(max_length=50, choices=PROGRAM_TYPES)
-    
+    number_of_students = models.IntegerField(default=0)
     mentors_required = models.IntegerField(default=0)
     mentors_assigned = models.IntegerField(default=0)
 
