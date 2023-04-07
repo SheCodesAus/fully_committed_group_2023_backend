@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import CustomUser
 from rest_framework import serializers, validators
+from rest_framework.exceptions import ValidationError
+from django.contrib.auth.password_validation import validate_password
 
 # /users/
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -41,6 +43,23 @@ class CustomUserDetailSerializer(CustomUserSerializer):
                 "is_superuser"
             )
             read_only_fields = ["id"]
+
+# uses/current/change-password/
+class CustomUserPasswordSerializer(serializers.ModelSerializer):
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True, validators=[validate_password])
+    confirm_password = serializers.CharField(required=True)
+
+    class Meta:
+        model = CustomUser
+        fields = ('old_password', 'new_password', 'confirm_password')
+
+    def validate(self, data):
+        if data['new_password'] != data['confirm_password']:
+            raise ValidationError('Passwords do not match.')
+        return data
+
+
 
 # https://stackoverflow.com/a/50472986
 # https://www.django-rest-framework.org/api-guide/serializers/#customizing-serialization-classes

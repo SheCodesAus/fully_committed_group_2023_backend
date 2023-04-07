@@ -41,10 +41,14 @@ class MentorNoteDetail(generics.RetrieveUpdateDestroyAPIView):
 def api_root(request, format=None):
     return Response(
         {
+            "admin portal": reverse("admin:index", request=request, format=format),
+            "users": reverse("customuser-list", request=request, format=format),
+            "current user" : reverse("current", request=request, format=format),
+            "change password" : reverse("change-password", request=request, format=format),
             "mentors": reverse("mentor-list", request=request, format=format),
             "mentor-notes": reverse("mentor-notes-list", request=request, format=format),
             "sessions": reverse("session-list", request=request, format=format),
             "programs": reverse("program-list", request=request, format=format),
-            "users": reverse("customuser-list", request=request, format=format),
+
         }
     )
