@@ -17,8 +17,8 @@ class Program(models.Model):
         ('Perth', 'Perth')
     )
     program_name = models.CharField(max_length=255)
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    start_date = models.DateField()
+    end_date = models.DateField()
     city = models.CharField(max_length=50, choices=CITIES)
     program_type = models.CharField(max_length=50, choices=PROGRAM_TYPES)
     
