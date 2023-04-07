@@ -12,8 +12,8 @@ from sess.models import Session
 class MentorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
-        fields = ['id','first_name', 'last_name', 'email', 'will_travel', 'city', 'html_css', 'javascript', 'react', 'python', 'django', 'drf', 'junior_mentor', 'industry_mentor', 'lead_mentor', 'she_codes_alumni', 'payment_type', 'current_step', 'is_active']
-
+        fields = ['id','first_name', 'last_name', 'email', 'phone', 'will_travel', 'city', 'html_css', 'javascript', 'react', 'python', 'django', 'drf', 'junior_mentor', 'industry_mentor', 'lead_mentor', 'she_codes_alumni', 'payment_type', 'current_step', 'is_active']
+        # fields = ['id','first_name', 'last_name', 'email', 'will_travel', 'city', 'html_css', 'javascript', 'react', 'python', 'django', 'drf', 'junior_mentor', 'industry_mentor', 'lead_mentor', 'she_codes_alumni', 'payment_type', 'current_step', 'is_active']
 # ----------------------
 # /mentors/<id:pk>/
 # removes circular import issue for MentorDetailSerializer below
