@@ -17,6 +17,7 @@ class ProgramSerializer(serializers.ModelSerializer):
             'end_date',
             'city',
             'program_type',
+            'number_of_students',
             'mentors_required',
             'mentors_assigned',
             'sessions'
