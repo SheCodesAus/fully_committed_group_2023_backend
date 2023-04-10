@@ -30,3 +30,5 @@ urlpatterns = [
     path("api-token-auth/", obtain_auth_token, name="api_token_auth"),  # adds generate token url
     path('', include("users.urls")),
 ]
+
+admin.site.site_header = "Return To: Mentor Scheduling Tool"
