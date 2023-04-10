@@ -3,7 +3,7 @@
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr,auto' }}">
 <head>
 <title>{% block title %}{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 {% if not is_popup and is_nav_sidebar_enabled %}
     <link rel="stylesheet" type="text/css" href="{% static "admin/css/nav_sidebar.css" %}">
     <script src="{% static 'admin/js/nav_sidebar.js' %}" defer></script>
@@ -36,21 +36,22 @@
         {% if has_permission %}
         <div id="user-tools">
             {% block welcome-msg %}
-                {% translate 'Welcome,' %}
-                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+                {% translate 'Welcome back,' %}
+                <strong>{% firstof user.get_short_name user.get_username %}</strong> &nbsp;•&nbsp;
             {% endblock %}
             {% block userlinks %}
                 {% if site_url %}
-                    <a href="https://fullycommitted-mentor-scheduling-tool.netlify.app/" target="_blank">{% translate 'View site' %}</a> /
+                    <a href="https://fully-committed-mentor-scheduling-tool.fly.dev/" target="_blank">{% translate 'View Backend' %}</a> &nbsp;•&nbsp;
+                    <a href="https://fullycommitted-mentor-scheduling-tool.netlify.app/" target="_blank">{% translate 'View Frontend' %}</a> &nbsp;•&nbsp;
                 {% endif %}
                 {% if user.is_active and user.is_staff %}
                     {% url 'django-admindocs-docroot' as docsroot %}
                     {% if docsroot %}
-                        <a href="{{ docsroot }}">{% translate 'Documentation' %}</a> /
+                        <a href="{{ docsroot }}">{% translate 'Documentation' %}</a> &nbsp;•&nbsp;
                     {% endif %}
                 {% endif %}
                 {% if user.has_usable_password %}
-                <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a> /
+                <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a> &nbsp;•&nbsp;
                 {% endif %}
                 <a href="{% url 'admin:logout' %}">{% translate 'Log out' %}</a>
             {% endblock %}

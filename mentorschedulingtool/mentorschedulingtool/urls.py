@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework.authtoken.views import obtain_auth_token
+from django.conf import settings
+from django.conf.urls.static import static
 
 # API Root ---
 from mentors.views import api_root
@@ -29,7 +31,7 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls")),  # adds login button
     path("api-token-auth/", obtain_auth_token, name="api_token_auth"),  # adds generate token url
     path('', include("users.urls")),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 admin.site.site_header = "Return To: Live Mentor Scheduling Tool"
 admin.site.index_title = "Admin Portal"
