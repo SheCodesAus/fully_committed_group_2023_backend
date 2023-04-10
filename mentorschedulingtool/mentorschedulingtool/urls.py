@@ -31,4 +31,5 @@ urlpatterns = [
     path('', include("users.urls")),
 ]
 
-admin.site.site_header = "Return To: Mentor Scheduling Tool"
+admin.site.site_header = "Return To: Live Mentor Scheduling Tool"
+admin.site.index_title = "Admin Portal"
