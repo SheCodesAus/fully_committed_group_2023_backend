@@ -35,3 +35,10 @@ class Program(models.Model):
     def mentors_assigned(self):
         return sum(session.mentors_assigned for session in self.sessions.all())
     
+    def __str__(self):
+        '''
+        Changing representation of project object id to title so when ModelSerializer form is rendered, the title of the project will display, not the ID number.
+
+        Same way as in admin portal from django project
+        '''
+        return self.program_name
