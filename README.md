@@ -1,6 +1,6 @@
 <img src="https://github.com/Ms-KL/Ms-KL/raw/main/images/shecodes-icon.png" width="80px" height="80px" />
 
-# She Codes Plus Project 6: Mentor Scheduling Tool <br>(Front-End) by "Fully Committed"
+# She Codes Plus Project 6: Mentor Scheduling Tool <br>(Back-End) by "Fully Committed"
 [Wen](https://github.com/Simplicity305) • [Claire](https://github.com/Clahryott) • [Sam](https://github.com/samjsh) • [Kat](https://github.com/katitaliano) • [Sierra](https://github.com/supremeoverlord-ofdoom) • [Kristy](https://github.com/Ms-KL)
 
 ## About:
